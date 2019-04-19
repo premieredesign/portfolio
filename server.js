@@ -14,6 +14,13 @@ app.prepare()
             return handle(req, res)
         });
 
+        const faviconOptions = {
+            root: __dirname + '/static/'
+        };
+        server.get('/favicon.ico', (req, res) => (
+            res.status(200).sendFile('favicon.ico', faviconOptions)
+        ));
+
         server.use(handle).listen(3000, (err) => {
             if (err) throw err
             console.log('> Ready on http://localhost:3000')

@@ -91,11 +91,40 @@
     margin-top: 0px;
   }
 }
+.background-shadow {
+  opacity: 0.8;
+  background-image: linear-gradient(45deg,#2B2D42 0%,#2B2D42 100%);
+  //background-color: rgba(141,153,174,1);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  transition: all 1s;
+}
+
+@keyframes shadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
 
 .background-image {
   position: absolute;
-  width: 1762px;
-  height: 493px;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(15%);
+  }
 }
 
 .shadow-custom {
@@ -106,11 +135,22 @@
   box-shadow: -17px 13px 41px rgba(141,153,174,0.6);
   border-radius: 20px;
   border: 2px solid #8D99AE;
+  transition: all 1s;
+  animation: slideIn 3s ease-in-out forwards;
 
   .shadow-inner {
     width: 100%;
     height: 100%;
     box-shadow: -17px 13px 13px rgba(0,0,0,0.09);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
   }
 }
 
