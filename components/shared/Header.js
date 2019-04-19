@@ -1,38 +1,91 @@
 import React from 'react';
-import Link from 'next/link';
-import styled from 'styled-components';
+import Link from 'next/link'
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem } from 'reactstrap';
 
-const HeaderLinksStyled = styled.div`
-     font-size: 20px;
-`;
 
 
-export default class Header extends React.Component {
+const DynamicRouterLink = ({route, title}) => {
+    return (
+        <Link href={route}>
+            <a className="nav-link port-navbar-link">{title}</a>
+        </Link>
+    );
+};
+
+
+
+export default class Example extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            isOpen: false
+        };
+    }
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
     render() {
         return (
-            <React.Fragment>
-                <HeaderLinksStyled>
-                    <Link href="/">
-                        <a style={{'fontSize': '20px'}}> Home </a>
-                    </Link>
-
-                    <Link href="/about">
-                        <a> About </a>
-                    </Link>
-
-                    <Link href="/portfolios">
-                        <a> Portfolio </a>
-                    </Link>
-
-                    <Link href="/blogs">
-                        <a> Blog </a>
-                    </Link>
-
-                    <Link href="/cv">
-                        <a> CV </a>
-                    </Link>
-                </HeaderLinksStyled>
-            </React.Fragment>
-        )
+            <div>
+                <Navbar className='port-navbar port-default absolute' color="transparent" light expand="md">
+                    <NavbarBrand className='port-navbar-brand' href="/">Clinton M. Johnson</NavbarBrand>
+                    <NavbarToggler onClick={this.toggle} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem className='port-navbar-item'>
+                                <DynamicRouterLink route="/" title="Home" />
+                            </NavItem>
+                            <NavItem className='port-navbar-item'>
+                                <DynamicRouterLink route="/about" title="About" />
+                            </NavItem>
+                            <NavItem className='port-navbar-item'>
+                                <DynamicRouterLink route="/portfolio" title="Portfolio" />
+                            </NavItem>
+                            <NavItem className='port-navbar-item'>
+                                <DynamicRouterLink route="/blogs" title="Blog" />
+                            </NavItem>
+                            <NavItem className='port-navbar-item'>
+                                <DynamicRouterLink route="/cv" title="CV" />
+                            </NavItem>
+                            <NavItem className='port-navbar-item'>
+                                <DynamicRouterLink route="/https://github.com/premieredesign" title="Github" />
+                            </NavItem>
+                            <UncontrolledDropdown nav inNavbar>
+                                <DropdownToggle className='bg-white' nav caret>
+                                    Options
+                                </DropdownToggle>
+                                <DropdownMenu right>
+                                    <DropdownItem>
+                                        Option 1
+                                    </DropdownItem>
+                                    <DropdownItem>
+                                        Option 2
+                                    </DropdownItem>
+                                    <DropdownItem divider />
+                                    <DropdownItem>
+                                        Reset
+                                    </DropdownItem>
+                                </DropdownMenu>
+                            </UncontrolledDropdown>
+                        </Nav>
+                    </Collapse>
+                </Navbar>
+            </div>
+        );
     }
 }

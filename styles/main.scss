@@ -1,12 +1,14 @@
-@import './fonts';
+@import './shared/fonts';
 
 // PAGES
 @import './index';
 
+@import './header';
+
 html, body {
   height:100%;
   width:100%;
-  font-family: 'Montserrat', 'Helvetica', sans-serif;
+  font-family: 'Montserrat', 'Helvetica';
 }
 
 
@@ -14,5 +16,9 @@ html, body {
   font-size: 31px;
   font-weight: bold;
   letter-spacing: 2px;
-  color: white;
+  color: #EF233C;
+}
+
+.absolute {
+  position: absolute;
 }
