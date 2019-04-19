@@ -29,7 +29,7 @@ export default class Index extends React.Component {
                 <div className="main-section">
                     <div className="background-image">
                         <div className="background-shadow"></div>
-                        <img src="/static/images/clean-desk.jpg" />
+                        <img src="/static/images/clean-desk-2.jpeg" />
                     </div>
                     <Container>
                         <Row>
